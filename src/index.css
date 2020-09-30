@@ -1,13 +1,103 @@
+:root {
+  --turquoise: #1abc9c;
+  --greensea: #16a085;
+  --emerald: #2ecc71;
+  --nephritis: #27ae60;
+  --peterriver: #3498db;
+  --belizehole: #2980b9;
+  --amethyst: #9b59b6;
+  --wisteria: #8e44ad;
+  --wetasphalt: #34495e;
+  --midnightblue: #2c3e50;
+  --sunflower: #f1c40f;
+  --orange: #f39c12;
+  --carrot: #e67e22;
+  --pumpkin: #d35400;
+  --alizarin: #e74c3c;
+  --pomegranate: #c0392b;
+  --clouds: #ecf0f1;
+  --silver: #bdc3c7;
+  --concrete: #95a5a6;
+  --asbestos: #7f8c8d;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 2000px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.Footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: var(--wetasphalt);
+}
+
+.Footer__Columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Footer__Column:first-child {
+  color: var(--clouds);
+}
+
+.Footer__Column:last-child {
+  color: var(--clouds);
+}
+
+.Footer__Icon {
+  color: var(--clouds);
+  width: 50px !important;
+  height: 50px !important;
+  margin: 5px;
+}
+
+.Footer__Signature {
+  padding: 30px;
+  text-align: center;
+  color: var(--clouds);
+}
+
+.Footer__Signature a {
+  text-decoration: none;
+  color: var(--clouds);
+  font-weight: bold;
+}
+
+.Header {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: var(--clouds);
+}
+
+.Header__Logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Header__Logo {
+  color: var(--midnightblue);
+}
+
+.Header__Logo h1 {
+  margin-left: 20px;
 }
