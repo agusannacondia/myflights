@@ -1,7 +1,14 @@
 import axios from 'axios'
 
-const clienteAxios = axios.create({
+const clienteVuelos = axios.create({
     baseURL: process.env.REACT_APP_SKYSCANNER_URL
 });
 
-export default clienteAxios;
+const clienteHoteles = axios.create({
+    baseURL: process.env.REACT_APP_HOTELS_URL
+});
+
+export {
+    clienteVuelos,
+    clienteHoteles
+};

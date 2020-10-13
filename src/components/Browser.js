@@ -26,7 +26,7 @@ const Browser = ({ type }) => {
 const BrowserHoteles = () => {
   const mainContext = useContext(MainContext);
 
-  const { searchCities } = mainContext;
+  const { searchCities, browseHotels } = mainContext;
   const [search, setSearch] = useState({
     destination: "",
     dateFrom: "",
@@ -96,7 +96,7 @@ const BrowserHoteles = () => {
     ) {
       return;
     }
-    console.log(search);
+    browseHotels(search);
   };
 
   return (
@@ -172,7 +172,7 @@ const BrowserHoteles = () => {
 const BrowserVuelos = () => {
   const mainContext = useContext(MainContext);
 
-  const { searchCities } = mainContext;
+  const { searchCities, browseFlights, browseFlightsRound } = mainContext;
   const [search, setSearch] = useState({
     quantity: "idayvuelta",
     origin: "",
@@ -188,10 +188,9 @@ const BrowserVuelos = () => {
   const [destinationOptions, setDestinationOptions] = useState([]);
 
   const handleChangeQuantity = async (event) => {
-    console.log(event);
     setSearch({
       ...search,
-      quantity: event.target.value,
+      quantity: event.target.id,
     });
   };
 
@@ -279,11 +278,16 @@ const BrowserVuelos = () => {
     search.origin === "" ||
     search.destination === "" ||
     search.dateFrom === "" ||
-    search.dateTo === ""
+    (search.quantity === "idayvuelta" && search.dateTo === "")
     ) {
       return;
     }
-    console.log(search);
+    if(search.quantity === "idayvuelta") {
+      browseFlightsRound(search);  
+    } else {
+      browseFlights(search);
+    }
+    
   };
 
   return (
@@ -297,7 +301,6 @@ const BrowserVuelos = () => {
             name="quantity"
             id="idayvuelta"
             label="Ida y vuelta"
-            checked
             onChange={handleChangeQuantity}
           />
           <Form.Check
@@ -355,7 +358,10 @@ const BrowserVuelos = () => {
         <Form.Group className="Browser__Form__Item Browser__Form__Item--doble">
           <Form.Label>Fechas</Form.Label>
           <Form.Control type="date" name="desde" onChange={handleChangeDates} />
-          <Form.Control type="date" name="hasta" onChange={handleChangeDates}/>
+          {
+            search.quantity === "idayvuelta" && <Form.Control type="date" name="hasta" onChange={handleChangeDates} />
+          }
+          
         </Form.Group>
         <Form.Group className="Browser__Form__Item">
           <Form.Label>Adultos</Form.Label>
@@ -406,7 +412,7 @@ const BrowserVuelos = () => {
 const BrowserPaquetes = () => {
   const mainContext = useContext(MainContext);
 
-  const { searchCities } = mainContext;
+  const { searchCities, browsePackages } = mainContext;
   const [search, setSearch] = useState({
     origin: "",
     destination: "",
@@ -500,7 +506,7 @@ const BrowserPaquetes = () => {
     ) {
       return;
     }
-    console.log(search);
+    browsePackages(search);
   };
 
   return (
@@ -598,7 +604,7 @@ const BrowserPaquetes = () => {
 const BrowserSorpresa = () => {
   const mainContext = useContext(MainContext);
 
-  const { searchCities } = mainContext;
+  const { searchCities, browseSurprise } = mainContext;
   const [search, setSearch] = useState({
     origin: "",
     dateFrom: "",
@@ -668,7 +674,7 @@ const BrowserSorpresa = () => {
     ) {
       return;
     }
-    console.log(search);
+    browseSurprise(search);
   };
 
   return (
