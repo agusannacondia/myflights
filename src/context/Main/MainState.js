@@ -57,6 +57,7 @@ const MainState = (props) => {
       headers: {
         "x-rapidapi-host": process.env.REACT_APP_SKYSCANNER_HOST,
         "x-rapidapi-key": process.env.REACT_APP_SKYSCANNER_API_KEY,
+        'Content-Type': 'application/json'
       },
     };
     try {
@@ -87,6 +88,7 @@ const MainState = (props) => {
       headers: {
         "x-rapidapi-host": process.env.REACT_APP_SKYSCANNER_HOST,
         "x-rapidapi-key": process.env.REACT_APP_SKYSCANNER_API_KEY,
+        'Content-Type': 'application/json'
       },
     };
     try {
@@ -192,6 +194,7 @@ const MainState = (props) => {
       headers: {
         "x-rapidapi-host": process.env.REACT_APP_HOTELS_HOST,
         "x-rapidapi-key": process.env.REACT_APP_HOTELS_API_KEY,
+        'Content-Type': 'application/json'
       },
     };
     try {
@@ -228,6 +231,7 @@ const MainState = (props) => {
       headers: {
         "x-rapidapi-host": process.env.REACT_APP_HOTELS_HOST,
         "x-rapidapi-key": process.env.REACT_APP_HOTELS_API_KEY,
+        'Content-Type': 'application/json'
       },
     };
     try {
@@ -419,103 +423,3 @@ const searchPlaceNameById = (array, id) => {
 };
 
 export default MainState;
-
-/* const searchFlightsRoundByPlaceDate = async (search) => {
-    var config = {
-      headers: {
-        "x-rapidapi-host": process.env.REACT_APP_SKYSCANNER_HOST,
-        "x-rapidapi-key": process.env.REACT_APP_SKYSCANNER_API_KEY,
-      },
-    };
-    try {
-      const dataOutbound = await clienteVuelos.get(
-        `/browsequotes/v1.0/AR/ARS/es-AR/${search.origin.id}/${search.destination.id}/${search.dateFrom}`,
-        config
-      );
-      var result = [];
-      for(let quote in dataOutbound.data.Quotes) {
-        let price = quote.MinPrice;
-        let direct = quote.Direct;
-        let carrier = quote.OutboundLeg.CarrierIds.length === 0 ? "" : searchCarrierNameById(dataOutbound.data.Carriers, quote.OutboundLeg.CarrierIds[0]);
-        let place = searchPlaceNameById(dataOutbound.data.Places, quote.OutboundLeg.DestinationId);
-        result.push({
-          price,
-          direct,
-          carrier,
-          place
-        });
-      }
-      const dataBack = await clienteVuelos.get(
-        `/browsequotes/v1.0/AR/ARS/es-AR/${search.origin.id}/${search.destination.id}/${search.dateTo}`,
-        config
-      );
-      for(let quote in dataBack.data.Quotes) {
-        let price = quote.MinPrice;
-        let direct = quote.Direct;
-        let carrier = quote.OutboundLeg.CarrierIds.length === 0 ? "" : searchCarrierNameById(dataBack.data.Carriers, quote.OutboundLeg.CarrierIds[0]);
-        let place = searchPlaceNameById(dataBack.data.Places, quote.OutboundLeg.DestinationId);
-        result.push({
-          price,
-          direct,
-          carrier,
-          place
-        });
-      }
-      return result;
-    } catch (error) {
-      throw error;
-    }
-  } */
-
-/* const browseFlightsRound = async (search) => {
-    var config = {
-        headers: {
-          "x-rapidapi-host": process.env.REACT_APP_SKYSCANNER_HOST,
-          "x-rapidapi-key": process.env.REACT_APP_SKYSCANNER_API_KEY,
-        },
-      };
-      try {
-        const dataOutbound = await clienteVuelos.get(
-          `/browsequotes/v1.0/AR/ARS/es-AR/${search.origin.id}/${search.destination.id}/${search.dateFrom}`,
-          config
-        );
-        var result = [];
-        for(let quote in dataOutbound.data.Quotes) {
-          let price = quote.MinPrice;
-          let direct = quote.Direct;
-          let carrier = quote.OutboundLeg.CarrierIds.length === 0 ? "" : searchCarrierNameById(dataOutbound.data.Carriers, quote.OutboundLeg.CarrierIds[0]);
-          let place = searchPlaceNameById(dataOutbound.data.Places, quote.OutboundLeg.DestinationId);
-          result.push({
-            price,
-            direct,
-            carrier,
-            place
-          });
-        }
-        const dataBack = await clienteVuelos.get(
-          `/browsequotes/v1.0/AR/ARS/es-AR/${search.origin.id}/${search.destination.id}/${search.dateTo}`,
-          config
-        );
-        for(let quote in dataBack.data.Quotes) {
-          let price = quote.MinPrice;
-          let direct = quote.Direct;
-          let carrier = quote.OutboundLeg.CarrierIds.length === 0 ? "" : searchCarrierNameById(dataBack.data.Carriers, quote.OutboundLeg.CarrierIds[0]);
-          let place = searchPlaceNameById(dataBack.data.Places, quote.OutboundLeg.DestinationId);
-          result.push({
-            price,
-            direct,
-            carrier,
-            place
-          });
-        }
-        dispatch({
-          type: GET_RESULTS,
-          payload: {
-            results: result,
-            type: 'vuelos' 
-          }
-        })
-      } catch (error) {
-        throw error;
-      }
-  } */
